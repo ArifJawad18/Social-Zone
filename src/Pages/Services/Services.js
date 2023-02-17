@@ -9,7 +9,8 @@ const Services = () => {
         .then(data => setServices(data))
     },[])
     return (
-        <div className='grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ml-10 mr-5 mt-7'>
+        <div className='grid gap-5 grid-cols-2 md:grid-cols-2 lg:grid-cols-2 ml-7 mr-5 mt-7'>
+            
            
             {
                 services.map(service => <ServiceCard
