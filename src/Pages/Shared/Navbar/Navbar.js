@@ -2,10 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+  const menuItems = <>
+    
+   
+
+  </>
+
   return (
     <div>
       <div className="navbar">
-  <a className="btn btn-ghost normal-case text-blue-500 text-xl">Social Box</a>
+  <a className="btn btn-ghost normal-case text-blue-500 text-2xl"> Social Zone</a>
 </div>
       <div className="h-full p-3 space-y-2 w-100 bg-gray-50 text-gray-800">
         <div className="flex items-center p-2 space-x-4">
@@ -42,7 +49,7 @@ const Navbar = () => {
                 >
                   <path d="M469.666,216.45,271.078,33.749a34,34,0,0,0-47.062.98L41.373,217.373,32,226.745V496H208V328h96V496H480V225.958ZM248.038,56.771c.282,0,.108.061-.013.18C247.9,56.832,247.756,56.771,248.038,56.771ZM448,464H336V328a32,32,0,0,0-32-32H208a32,32,0,0,0-32,32V464H64V240L248.038,57.356c.013-.012.014-.023.024-.035L448,240Z"></path>
                 </svg>
-                <span>Home</span>
+                <li><Link to="/">Home</Link></li>
               </a>
             </li>
             <li className="bg-gray-100 text-gray-900">
@@ -99,7 +106,7 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <ul className="pt-4 pb-2 space-y-1 text-sm">
+          <ul className=" pt-4 pb-2 space-y-1 text-sm">
             <li>
               <a
                 rel="noopener noreferrer"
@@ -114,8 +121,9 @@ const Navbar = () => {
                   <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
                   <rect width="32" height="64" x="256" y="232"></rect>
                 </svg>
+               
                 <li>
-                  <Link src="/login">Login</Link>
+                  <Link to="/login">Login</Link>
                 </li>
               </a>
             </li>

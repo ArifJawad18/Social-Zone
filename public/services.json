@@ -6,7 +6,7 @@
     "img": "https://source.unsplash.com/40x40/?portrait?1",
 
     "price": 4500,
-    "title": "Curabitur luctus erat nunc, sed ullamcorper erat vestibulum eget.",
+    "title": "Curabitur luctus erat nunc, sed ullamcorper erat vestibulum eget.Eu qualisque aliquando mel, id lorem detraxit nec, ad elit minimum pri.",
     "number": "3.5"
   },
   {
@@ -15,7 +15,7 @@
     "picture": "https://source.unsplash.com/random/480x360/?4",
     "img": "https://source.unsplash.com/40x40/?portrait?2",
     "price": 4500,
-    "title": "Nemo ea quasi debitis impedit!dicta viris volutpat mea an, et nec discere epicuri",
+    "title": "Nemo ea quasi debitis impedit!dicta viris volutpat mea an, et nec discere epicuri Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!",
     "number": "3.5"
   },
   {
@@ -47,7 +47,7 @@
   },
   {
     "id": "6",
-    "name": "leroy_jenkins72",
+    "name": "jenkins_20",
     "picture": "https://source.unsplash.com/301x301/?random",
     "img": "https://source.unsplash.com/200x200/?portrait?2",
     "price": 4500,

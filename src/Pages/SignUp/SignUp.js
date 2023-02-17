@@ -2,40 +2,51 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
-const Login = () => {
+const SignUp = () => {
+    const {createUser} = useContext(AuthContext)
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-    const {login} = useContext(AuthContext)
-
-    const handleLogin = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-
-        login(email, password)
-        .then(result =>{
-            const user = result.user;
-            console.log(user)
-        })
-        .then(error => console.log(error));
-
-    }
+    createUser(email, password)
+    .then(result =>{
+        const user = result.user;
+        console.log(user);
+    })
+    .catch(err => console.error(err));
+    
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left"></div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleLogin} className="card-body">
-            <h1 className="text-3xl text-blue-600 font-bold">Login</h1>
+          <form onSubmit={handleSignUp} className="card-body">
+            <h1 className="text-3xl text-blue-600 font-bold">Sign Up</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Full Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="name"
+                name="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="text"
-                name="email"
                 placeholder="email"
+                name="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -47,24 +58,22 @@ const Login = () => {
                 placeholder="password"
                 name="password"
                 className="input input-bordered"
+                required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+                <a href="#" className="label-text-alt link link-hover"></a>
               </label>
             </div>
             <div className="form-control mt-6">
-                <input   className="btn btn-primary" type="submit" value="Login" />
-              
+              <input className="btn btn-primary" type="submit" value="Sign Up" />
             </div>
             <div className="flex items-center pt-4 space-x-1">
               <div className="flex-1 h-px sm:w-16"></div>
               <p className="px-5 text-sm text-gray-600">
-                {" "}Login with social accounts{" "}
-               
+                {" "}
+                Login with social accounts{" "}
               </p>
-              
+
               <div className="flex-1 h-px sm:w-16"></div>
             </div>
             <div className="flex justify-center space-x-4">
@@ -81,13 +90,21 @@ const Login = () => {
                 </svg>
               </button>
             </div>
-            <p className="flex justify-center">Don't have an account?-<Link  className=" flex justify-center text-blue-600 font-bold" to="/signup">SignUp</Link></p>
+            <p className="flex justify-center">
+              {" "}
+              Have an account?-
+              <Link
+                className=" flex justify-center text-blue-600 font-bold"
+                to="/login"
+              >
+                Login
+              </Link>
+            </p>
           </form>
-       
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
