@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "1",
+    "name": " C",
+    "picture": "https://img.freepik.com/premium-vector/letter-c-font-made-from-binary-code-digits-dark-blue-background_601748-29916.jpg?w=740",
+    "price": 4500,
+    "title": "C is a popular programming language.",
+    "number": "3.5"
+  },
+  {
+    "_id": "2",
+    "name": "JavaScript",
+    "picture": "https://live.staticflickr.com/65535/52412638962_12e932256a_o.png",
+    "price": 4500,
+    "title": "JavaScript is a popular programming language.",
+    "number": "3.5"
+  },
+  {
+    "_id": "4",
+    "name": "C++",
+    "picture": "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg",
+    "price": 4500,
+    "title": "C++ is a popular programming language.",
+    "number": "3.5"
+  },
+  {
+    "_id": "6",
+    "name": "Ruby",
+    "picture": "https://cdn-icons-png.flaticon.com/512/919/919842.png?w=740&t=st=1666969915~exp=1666970515~hmac=85ccb705b84fa42c4ce51d687c7798436367dda53e9de749e88829ded49ba4c7",
+    "price": 4500,
+    "title": "Ruby is a popular programming language.",
+    "number": "3.5"
+  },
+  {
+    "_id": "5",
+    "name": "Python",
+    "picture": "https://img.freepik.com/premium-photo/smartphone-with-flying-round-python-logo-icons-3d_327483-1781.jpg?w=740",
+    "price": 4500,
+    "title": "Python is a popular programming language.",
+    "number": "3.5"
+  },
+  {
+    "id": "6",
+    "name": "Java",
+    "picture": "https://www.orientsoftware.com/Media/Default/Images/BlogPost/2021-12-23/java-language.jpg",
+    "price": 4500,
+    "title": "Java is a popular programming language.",
+    "number": "3.5"
+  }
+]
