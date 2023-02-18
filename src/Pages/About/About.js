@@ -13,7 +13,7 @@ const About = () => {
         >
           <input
             type="text"
-            placeholder="Name:"
+            placeholder="Name"
             className="input w-full max-w-xs mt-5"
           />
           <input
