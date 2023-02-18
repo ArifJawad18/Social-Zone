@@ -21,7 +21,7 @@ const ServiceCard = ({ service }) => {
   <button tabIndex={0} className="btn btn-ghost ">o o o</button>
   <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
     <li><a>Edit</a></li>
-    <li><a>Pin</a></li>
+    <li className="text-red-500"><a >Delete</a></li>
   </ul>
 </div>
       </div>
