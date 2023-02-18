@@ -32,7 +32,7 @@ const ServiceCard = ({ service }) => {
             <button
               type="button"
               title="Like post"
-              className="flex items-center justify-center"
+              className="flex items-center text-red-500 justify-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
