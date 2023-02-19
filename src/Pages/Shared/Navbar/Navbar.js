@@ -127,7 +127,7 @@ const Navbar = () => {
                   <rect width="32" height="64" x="256" y="232"></rect>
                 </svg>
                
-              {user?.uid ? <li><button  onClick={handleLogout}>Sign out</button></li>
+              {user?.uid ? <li><button  onClick={handleLogout}>Log Out</button></li>
               :<li><Link to="/login">Login</Link></li>}
               </a>
             </li>
