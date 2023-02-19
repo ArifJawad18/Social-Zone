@@ -21,25 +21,23 @@ export const router = createBrowserRouter([
         element: <About></About>,
       },
       {
-        path:'/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:'/signup',
-        element: <SignUp></SignUp>
+        path: "/signup",
+        element: <SignUp></SignUp>,
       },
       {
-        path:'/checkout',
-        element: <Checkout></Checkout>
+        path: "/checkout",
+        element: <Checkout></Checkout>,
       },
-     
+
       {
-        path:'/message',
-        element: <Message></Message>
+        path: "/message",
+        element: <Message></Message>,
       },
     ],
-    
-     
   },
 ]);
 
