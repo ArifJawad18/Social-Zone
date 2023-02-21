@@ -1,32 +1,56 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
-  const [error, setError] = useState("");
-
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const { signIn } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState("");
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  const from = location.state?.from?.pathname || "/";
 
-    signIn(email, password)
+  const handleLogin = (data) => {
+    console.log(data);
+    setLoginError("");
+    signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        form.reset();
-        setError("");
-        navigate("/");
-      })
 
+        const currentUser = {
+          email: user.email,
+        };
+
+        console.log(currentUser);
+
+        //get jwt token
+        fetch("/jwt", {
+          method: "POST",
+          headers: {
+            "content type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            //local storage
+            localStorage.setItem("token", data.token);
+          });
+
+        navigate(from, { replace: true });
+      })
       .catch((error) => {
-        console.error(error);
-        setError(error.message);
+        console.log(error.message);
+        setLoginError(error.message);
       });
   };
 
@@ -42,48 +66,44 @@ const Login = () => {
       })
       .catch((error) => console.error(error));
   };
-
   return (
-    <div className="hero-content flex-col lg:flex-row-reverse">
-      <div className="text-center lg:text-left">
-        <h1 className="text-2xl text-center text-blue-500 font-bold">Login</h1>
-        <form
-          onSubmit={handleSubmit}
-          novalidate=""
-          action=""
-          className="space-y-6 ng-untouched ng-pristine ng-valid"
-        >
-          <div className="space-y-1 text-sm">
-            <label for="email" className="block text-gray-600">
-              Email address
+    <div className="h-[500px] flex justify-center items-center">
+      <div className="w-96 p-7 shadow-2xl bg-base-100">
+        <h2 className="text-blue-500 text-3xl font-bold text-center"> Login</h2>
+        <form onSubmit={handleSubmit(handleLogin)}>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Email</span>
             </label>
+
             <input
-              type="text"
-              name="email"
-              id="email"
-              placeholder=" Email"
-              required
-              className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+              type="email"
+              {...register("email", { required: "Email Address is Empty " })}
+              className="input input-bordered input-primary w-full max-w-xs"
             />
+            {errors.email && (
+              <p className="text-red-500">{errors.email?.message}</p>
+            )}
           </div>
-          <div className="space-y-1 text-sm">
-            <label for="password" className="block text-gray-600">
-              Password
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Password</span>
             </label>
             <input
               type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              required
-              className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+              {...register("password", { required: "Password is Empty" })}
+              className="input input-bordered input-primary  w-full max-w-xs"
             />
+            {errors.password && (
+              <p className="text-red-500">{errors.password?.message}</p>
+            )}
           </div>
-          <button className="block w-full p-3 text-center rounded-xl text-gray-50 bg-blue-600">
-            Sign in
-          </button>
-
-          <p className="text-danger">{error}</p>
+          <input
+            className=" btn  w-full mt-5 px-8 py-3 font-semibold rounded-md bg-sky-600 text-gray-50"
+            value="Login"
+            type="submit"
+          />
+          <div>{loginError && <p>{}</p>}</div>
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
@@ -107,15 +127,11 @@ const Login = () => {
             </svg>
           </button>
         </div>
-        <p className="text-xs text-center sm:px-10 text-gray-600">
-          Don't have an account?-
-          <a
-            rel="noopener noreferrer"
-            href="/signup"
-            className="underline  text-blue-500"
-          >
-            Signup Now
-          </a>
+        <p className=" text-center text-sm  text-gray-600">
+          Don't have an account ?
+          <Link className=" ml-2 text-blue-500" to="/signup">
+            Sign up{" "}
+          </Link>
         </p>
       </div>
     </div>
