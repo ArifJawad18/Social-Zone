@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="navbar">
-  <a className="btn btn-ghost normal-case text-blue-500 text-2xl"> Social Zone</a>
+  <li className="btn btn-ghost normal-case text-blue-500 text-2xl"><Link to='/'>Social Zone</Link></li>
 </div>
       <div className="h-full p-3 space-y-2 w-100 bg-gray-50 text-gray-800">
         <div className="flex items-center p-2 space-x-4">
