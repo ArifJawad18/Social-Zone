@@ -23,10 +23,10 @@ const Checkout = () => {
       method: "POST",
       body: formData,
     })
-      .then(res => res.json())
-      .then(imgData => {
-        console.log(imgData)
-        if (imgData.success){
+      .then((res) => res.json())
+      .then((imgData) => {
+        console.log(imgData);
+        if (imgData.success) {
           console.log(imgData.data.url);
           const doctor = {
             name: data.name,
@@ -41,11 +41,11 @@ const Checkout = () => {
             },
             body: JSON.stringify(doctor),
           })
-            .then(res => res.json())
-            .then(result =>{
+            .then((res) => res.json())
+            .then((result) => {
               console.log(result);
-             window.alert(`${data.name} is added successfully`);
-              navigate('/');
+              window.alert(`${data.name} is added successfully`);
+              navigate("/");
             });
         }
       });
@@ -53,14 +53,14 @@ const Checkout = () => {
 
   return (
     <div className="h-[300px] flex justify-center items-center mt-5">
-     
       <form onSubmit={handleSubmit(handleAddDoctor)}>
         <div className="">
           <textarea
             type="text"
             {...register("name", { required: "Name is Empty" })}
             className="input input-bordered  w-full max-w-xs"
-            required placeholder="What's on your mind ?"
+            required
+            placeholder="What's on your mind ?"
           />
           {errors.name && (
             <p className="text-red-500">{errors.name?.message}</p>
@@ -68,7 +68,6 @@ const Checkout = () => {
         </div>
 
         <div className="form-control w-full max-w-xs mt-8">
-         
           <input
             type="file"
             {...register("image", { required: "Photo is Required" })}
