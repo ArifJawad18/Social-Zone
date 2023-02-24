@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
@@ -42,11 +41,11 @@ const Checkout = () => {
             },
             body: JSON.stringify(doctor),
           })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-              toast.success(`${data.name} is added successfully`);
-              navigate("/");
+            .then(res => res.json())
+            .then(result =>{
+              console.log(result);
+             window.alert(`${data.name} is added successfully`);
+              navigate('/');
             });
         }
       });
