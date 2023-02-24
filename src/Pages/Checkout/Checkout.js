@@ -24,13 +24,13 @@ const Checkout = () => {
       method: "POST",
       body: formData,
     })
-      .then((res) => res.json())
-      .then((imgData) => {
-        if (imgData.success) {
+      .then(res => res.json())
+      .then(imgData => {
+        console.log(imgData)
+        if (imgData.success){
           console.log(imgData.data.url);
           const doctor = {
             name: data.name,
-            email: data.email,
             image: imgData.data.url,
           };
           // save information to the database
@@ -43,8 +43,8 @@ const Checkout = () => {
             body: JSON.stringify(doctor),
           })
             .then((res) => res.json())
-            .then((result) => {
-              console.log(result);
+            .then((data) => {
+              console.log(data);
               toast.success(`${data.name} is added successfully`);
               navigate("/");
             });
